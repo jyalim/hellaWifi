@@ -24,6 +24,22 @@ To stop the process:
 
     $ pkill -f hellaWifi
 
+To install the script to /Library/StartupItems so that the daemon
+  starts with boot, run:
+
+    $ bash install-start-on-boot.bash
+
+It will need a password as /Library/StartupItems is a special directory.
+To uninstall the script so it doesn't startup on boot, run:
+
+    $ bash remove-start-on-boot.bash
+
+Which will again need a password because /Library/StartupItems is a
+special directory.
+
+Note that the install script will also start the daemon, but the removal
+  script will not kill the daemon.
+
 Motivation
 ==========
 
@@ -38,7 +54,6 @@ Since WiFi is generally used with laptops, a daemon nicely automates the
 Style
 =====
 
-The daemon does not need admin, and should not need a password.
 It will run in the background simply pinging a router keeping a WiFi
   session alive.
 When the daemon starts, a log file, $HOME/.local/var/log/hellaWifi.log
