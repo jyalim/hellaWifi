@@ -34,7 +34,8 @@ __EOF
 cp -v $lagent_path $target_path
  
 # Unload old plist if loaded
-launchctl list | grep $lagaent_name && launctl unload $target_path || :
+launchctl list | grep $lagent_name &>/dev/null && \
+  launchctl unload $target_path || :
 
 # Load new plist
 echo "Starting daemon for current session"

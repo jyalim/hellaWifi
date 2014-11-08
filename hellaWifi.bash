@@ -1,14 +1,10 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash 
 
 polltime=60      # Seconds
 logdir="${HOME}/.local/var/log"
 logfile="${logdir}/hellaWifi.log"
 
 [[ ! -d $logdir ]] && mkdir -p $logdir || :
-
-init() {
-  pkill -f hellaWifi 
-}
 
 get_router() {
   router=$(route get default | grep gateway | awk 'NR == 1{print $2}')
@@ -38,8 +34,6 @@ daemon() {
 
   logging "-----------------------------------------------------"
   logging "Starting Daemon with polltime: $polltime seconds"
-
-  init
 
   router=$(get_router)
   ppid=$(keep_alive $router)
