@@ -17,7 +17,7 @@ get_router() {
 
 keep_alive() {
   router=${1:-''}
-  [[ -z $router ]] && exit 1 || :
+  [[ -z $router ]] && exit 100 || :
   ping -s 1 -i 1 $router &> /dev/null &
   ping_pid=$!
   echo $ping_pid
@@ -73,6 +73,4 @@ trapped() {
   exit 
 }
 
-daemon &
-disown $! 
-
+daemon 

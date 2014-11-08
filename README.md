@@ -12,33 +12,27 @@ This is a terminal application. It must be started within the shell.
 The shell that is default with Yosemite is called Terminal.app, and a 
   spotlight search for "Terminal" will find it. 
 
-The daemon script just has to be run once and it'll be in the background
-  until the computer reboots:
+The daemon script is handled with Mac OS X's launchd job handler.
 
-    $ bash hellaWifi.bash
-
-where the dollar sign only implies the use of the Bash shell and is 
-  non-literal (don't include it if trying to run the program).
-
-To stop the process:
-
-    $ pkill -f hellaWifi
-
-To install the script to /Library/StartupItems so that the daemon
-  starts with boot, run:
+To install and run it:
 
     $ bash install-start-on-boot.bash
 
-It will need a password as /Library/StartupItems is a special directory.
-To uninstall the script so it doesn't startup on boot, run:
+where the dollar sign only implies the use of the Bash shell and is 
+  non-literal (don't include it if trying to run the program).
+The installer creates a plist file that tells launchd where to find
+  hellaWifi.bash.
+It is not recommended to remove any files post installation as the 
+  current setup expects hellaWifi.bash to be in the git directory.
+
+To stop the process and remove the daemon from starting on login:
 
     $ bash remove-start-on-boot.bash
 
-Which will again need a password because /Library/StartupItems is a
-special directory.
-
-Note that the install script will also start the daemon, but the removal
-  script will not kill the daemon.
+The installer and uninstaller scripts will not need root as the user 
+  will own the process.
+The daemon will be installed to $HOME/Library/LaunchAgents/ via the 
+  plist org.hellabyte.hellawifi.plist.
 
 Motivation
 ==========
