@@ -33,12 +33,15 @@ The installer and uninstaller scripts will not need root as the user
   will own the process.
 The daemon will be installed to $HOME/Library/LaunchAgents/ via the 
   plist org.hellabyte.hellawifi.plist.
+The daemon, installer, and uninstaller have all been successfully 
+  tested on a MacBook Pro that undergoes a lot of WiFi network 
+  transitions during the average workday.
 
 Motivation
 ==========
 
 Especially when using bluetooth on a network, the WiFi network will drop
-  every few minutes in Yosemite 10.10.0. 
+  every few minutes in Yosemite 10.10. 
 This annoying feature of the latest operating system from Apple can be 
   overcome by simply pinging the router of the host network.
 Since WiFi is generally used with laptops, a daemon nicely automates the
@@ -58,6 +61,7 @@ Further, $HOME/.local/tmp/hellawifi-ppid will contain the active ping
   pid. 
 This temporary file will be deleted when the process shuts down, but is
   necessary to correctly shut down the process.
+
 
 
 (c) 2014 - 11 - 07 Nathaniel Hellabyte 
